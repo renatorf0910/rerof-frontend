@@ -1,12 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-import Login from './pages/login/Login';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import routes from './routes';
+import Header from './pages/header/Header';
 
 function App() {
   return (
-    <div className="App">
-      <Login />
-    </div>
+    <>
+      <Router>
+        <Header />
+        <Routes>
+          {routes.map((route, index) => (
+            <Route key={index} path={route.path} element={route.element} />
+          ))}
+        </Routes>
+      </Router>
+    </>
   );
 }
 
